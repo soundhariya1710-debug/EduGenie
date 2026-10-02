@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduGenie | Google Gemini Powered Learning Assistant</title>
+  <meta name="description" content="EduGenie is an AI learning assistant for college students, powered by Google Gemini." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-logo">🎓</span>
+        <span>
+          <span class="brand-name">EduGenie</span>
+          <span class="brand-sub">AI Learning Assistant</span>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="#ask">Ask</a>
+        <a href="#features">Features</a>
+        <a href="#quiz">Quiz</a>
+      </nav>
+      <div class="status" id="status" title="Gemini AI status">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Checking Gemini...</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="pill">✨ Powered by Google Gemini</span>
+        <h1>EduGenie: <span class="gradient-text">Google Gemini Powered</span> Learning Assistant</h1>
+        <p class="hero-text">
+          Ask any academic question and get clear, student-friendly answers with examples,
+          simple explanations, study notes and instant quizzes.
+        </p>
+        <div class="hero-actions">
+          <a href="#ask" class="btn btn-primary">Start Learning</a>
+          <a href="#quiz" class="btn btn-ghost">Try a Quick Quiz</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>24/7</strong><span>AI Tutor</span></div>
+          <div><strong>5</strong><span>Quiz MCQs</span></div>
+          <div><strong>4</strong><span>Learning Modes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASK EDUGENIE -->
+    <section class="section" id="ask">
+      <div class="container">
+        <div class="section-head">
+          <h2>Ask EduGenie</h2>
+          <p>Type your question, pick a learning mode, and let Gemini help you learn.</p>
+        </div>
+
+        <div class="card">
+          <div class="modes" id="modes">
+            <button class="mode active" data-mode="ask">💬 Ask Question</button>
+            <button class="mode" data-mode="simple">🧒 Simple Explanation</button>
+            <button class="mode" data-mode="example">💡 Examples</button>
+            <button class="mode" data-mode="study">📚 Study Assistance</button>
+          </div>
+
+          <label for="question" class="label">Your question</label>
+          <textarea id="question" rows="5" maxlength="2000"
+            placeholder="e.g. Explain DBMS in simple terms"></textarea>
+          <div class="counter"><span id="charCount">0</span> / 2000</div>
+
+          <div class="chips">
+            <button class="chip" data-q="What is DBMS?">What is DBMS?</button>
+            <button class="chip" data-q="Explain recursion in Java.">Recursion in Java</button>
+            <button class="chip" data-q="What is artificial intelligence?">What is AI?</button>
+            <button class="chip" data-q="Explain operating system.">Operating System</button>
+            <button class="chip" data-q="What is normalization?">Normalization</button>
+            <button class="chip" data-q="Explain binary search with an example.">Binary Search</button>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="askBtn">Ask EduGenie</button>
+            <button class="btn btn-ghost" id="clearBtn">Clear</button>
+          </div>
+
+          <div class="error" id="askError" role="alert" hidden></div>
+
+          <div class="loader" id="askLoader" hidden>
+            <span class="spinner"></span> EduGenie is thinking...
+          </div>
+
+          <div class="response" id="responseBox" hidden>
+            <div class="response-head">
+              <span>🤖 EduGenie's Answer</span>
+              <button class="copy" id="copyBtn">Copy</button>
+            </div>
+            <div class="response-body" id="responseBody"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section alt" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Learning Features</h2>
+          <p>Click a feature to switch mode and start learning.</p>
+        </div>
+        <div class="grid">
+          <button class="feature" data-mode="ask">
+            <span class="icon">💬</span>
+            <h3>Ask Questions</h3>
+            <p>Get accurate answers to any academic question.</p>
+          </button>
+          <button class="feature" data-mode="simple">
+            <span class="icon">🧒</span>
+            <h3>Simple Explanations</h3>
+            <p>Hard topics explained in easy everyday language.</p>
+          </button>
+          <button class="feature" data-mode="example">
+            <span class="icon">💡</span>
+            <h3>Examples</h3>
+            <p>Practical examples and code to make concepts clear.</p>
+          </button>
+          <button class="feature" data-mode="study">
+            <span class="icon">📚</span>
+            <h3>Study Assistance</h3>
+            <p>Key points, terms and exam questions for revision.</p>
+          </button>
+          <a class="feature" href="#quiz">
+            <span class="icon">📝</span>
+            <h3>Quiz Generation</h3>
+            <p>Test yourself with instant 5-question MCQ quizzes.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="section" id="quiz">
+      <div class="container">
+        <div class="section-head">
+          <h2>Quick Quiz</h2>
+          <p>Enter a topic and get 5 multiple-choice questions with an answer key.</p>
+        </div>
+
+        <div class="card">
+          <label for="topic" class="label">Quiz topic</label>
+          <div class="row">
+            <input type="text" id="topic" maxlength="200" placeholder="e.g. DBMS" />
+            <button class="btn btn-primary" id="quizBtn">Generate Quiz</button>
+            <button class="btn btn-ghost" id="quizClearBtn">Clear</button>
+          </div>
+
+          <div class="error" id="quizError" role="alert" hidden></div>
+          <div class="loader" id="quizLoader" hidden>
+            <span class="spinner"></span> Generating your quiz...
+          </div>
+
+          <div id="quizBox" hidden>
+            <h3 class="quiz-title" id="quizTitle"></h3>
+            <div id="quizQuestions"></div>
+            <div class="actions">
+              <button class="btn btn-primary" id="checkBtn">Check My Answers</button>
+              <button class="btn btn-ghost" id="keyBtn">Show Answer Key</button>
+            </div>
+            <div class="score" id="score" hidden></div>
+            <div class="answer-key" id="answerKey" hidden></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p><strong>EduGenie</strong> · Google Gemini Powered Learning Assistant</p>
+      <p class="muted">Naan Mudhalvan Project · Built with HTML, CSS, JavaScript, Node.js, Express &amp; Google Gemini</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
